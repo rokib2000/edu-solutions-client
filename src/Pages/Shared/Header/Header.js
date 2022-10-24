@@ -32,7 +32,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <Link to="/" className=" normal-case text-2xl">
+        <Link to="/" className=" normal-case text-2xl font-bold">
           Edu Solutions
         </Link>
       </div>
@@ -53,7 +53,15 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link className="btn">Login</Link>
+        <form>
+          <div className="form-control">
+            <label className="label cursor-pointer">
+              <input type="checkbox" className="toggle toggle-secondary" checked />
+            </label>
+          </div>
+        </form>
+
+        <Link className="btn ml-2">Login</Link>
         <Link className="btn ml-2">Register</Link>
 
         <div className="dropdown dropdown-end">
