@@ -8,6 +8,7 @@ import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Page404 from "../../Pages/Page404/Page404";
 import Register from "../../Pages/Register/Register";
+import Profile from "../../Pages/Shared/Profile/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/profile",
+        element: <Profile></Profile>,
       },
     ],
   },

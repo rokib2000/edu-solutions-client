@@ -51,13 +51,16 @@ const Header = () => {
                   <div className="swap-on btn">Light</div>
                   <div className="swap-off btn">Dark</div>
                 </label>
-
-                <Link to="/login" className="btn mt-2">
-                  Login
-                </Link>
-                <Link to="/register" className="btn mt-3">
-                  Register
-                </Link>
+                {!user && (
+                  <>
+                    <Link to="/login" className="btn mt-2">
+                      Login
+                    </Link>
+                    <Link to="/register" className="btn mt-3">
+                      Register
+                    </Link>
+                  </>
+                )}
               </div>
             </ul>
           </div>
