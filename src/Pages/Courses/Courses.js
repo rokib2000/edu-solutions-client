@@ -2,10 +2,28 @@ import React from "react";
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Course from "../Course/Course";
+import Cart from "../Shared/Cart/Cart";
 
 const Courses = () => {
   const courses = useLoaderData();
   const [cart, setCart] = useState([]);
+  const [selectedCourse, setSelectedCourse] = useState([]);
+
+  const handleAddToCart = (selectCourse) => {
+    // console.log(selectCourse);
+    setSelectedCourse(selectCourse);
+    let newCart = [];
+    const exists = cart.find((course) => course.id === selectCourse.id);
+
+    if (!exists) {
+      newCart = [...cart, selectCourse];
+    } else {
+      const rest = cart.filter((course) => course.id !== selectCourse.id);
+      // exists.quantity = exists.quantity + 1;
+      newCart = [...rest, exists];
+    }
+    setCart(newCart);
+  };
 
   return (
     <div className="flex flex-col md:flex-row">
@@ -19,7 +37,7 @@ const Courses = () => {
         </div>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4 xs:my-4">
           {courses.map((course) => (
-            <Course key={course.id} course={course}></Course>
+            <Course key={course.id} course={course} handleAddToCart={handleAddToCart}></Course>
           ))}
         </div>
       </div>
@@ -32,11 +50,7 @@ const Courses = () => {
           </div>
         </div>
         <div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium laborum aut earum officia minima, id
-            adipisci sapiente neque, cumque soluta voluptatum optio non accusamus sit suscipit deserunt dolore autem
-            maiores.
-          </p>
+          <Cart cart={cart}></Cart>
         </div>
       </div>
     </div>

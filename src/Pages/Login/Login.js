@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 
@@ -23,9 +24,9 @@ const Login = () => {
 
     emailPasswordLogIn(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
-        console.log("LogIn Successfully");
+        // const user = result.user;
+        // console.log(user);
+        toast.error("Successfully login");
         navigate(from, { replace: true });
         form.reset();
       })
@@ -56,9 +57,9 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googleLogIn()
       .then((result) => {
-        const user = result.user;
-        console.log(user);
-        console.log("LogIn Successfully");
+        // const user = result.user;
+        // console.log(user);
+        toast.error("Successfully login");
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -70,9 +71,9 @@ const Login = () => {
   const handleGithubLogin = () => {
     gitHubLogIn()
       .then((result) => {
-        const user = result.user;
-        console.log(user);
-        console.log("LogIn Successfully");
+        // const user = result.user;
+        // console.log(user);
+        toast.error("Successfully login");
         navigate(from, { replace: true });
       })
       .catch((error) => {

@@ -1,5 +1,6 @@
 import React from "react";
 import { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Context/UserContext";
 
@@ -9,10 +10,10 @@ const Header = () => {
   const handleLogout = () => {
     logOut()
       .then(() => {
-        // Sign-out successful.
+        toast.success("Successfully Logout!");
       })
       .catch((error) => {
-        // An error happened.
+        toast.error(error.message);
       });
   };
 
