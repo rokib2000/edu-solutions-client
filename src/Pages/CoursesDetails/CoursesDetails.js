@@ -1,22 +1,33 @@
 import React from "react";
-import { FaUsers, FaRegHeart, FaShoppingCart } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
+import { FaUsers, FaRegHeart } from "react-icons/fa";
+import { useLoaderData } from "react-router-dom";
+import { useRef } from "react";
 
-const Course = (props) => {
-  const { id, name, type, like, review, fee, img, lecture, project, students } = props.course;
+const CoursesDetails = () => {
+  const course = useLoaderData();
+  //   console.log(course);
+  const { name, description, type, like, review, fee, img, lecture, project, students } = course;
 
-  // console.log(course);
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: "edu-solution",
+    onafterprint: () => console.log("print success"),
+  });
+
   return (
-    <div>
+    <div ref={componentRef} style={{ width: "100%", height: window.innerHeight }}>
       <div className="card  bg-base-100 shadow-xl">
         <figure>
-          <img src={img} alt={name} />
+          <img src={img} alt={name} className="rounded-xl" />
         </figure>
-        <div className="card-body">
+        <div className="card-body items-center text-center">
           <h2 className="card-title">
             {name}
             <div className="badge badge-secondary badge-sm">{type}</div>
           </h2>
+          <p>{description}</p>
           <div className="card-actions justify-between my-4">
             <div className="rating">
               <input type="radio" name="rating-1" className="mask mask-star " />
@@ -41,11 +52,8 @@ const Course = (props) => {
             <div className="">Fee: {fee}</div>
           </div>
           <div className="card-actions  justify-between mt-4">
-            <Link to={`/course/${id}`} className="btn btn-primary btn-sm ">
-              View Details
-            </Link>
-            <button className="btn btn-secondary btn-sm ">
-              <FaShoppingCart className="text-xl"></FaShoppingCart>
+            <button onClick={handlePrint} className="btn btn-secondary btn-sm">
+              Save Pdf
             </button>
           </div>
         </div>
@@ -54,4 +62,4 @@ const Course = (props) => {
   );
 };
 
-export default Course;
+export default CoursesDetails;

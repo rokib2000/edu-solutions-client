@@ -31,7 +31,7 @@ const Courses = () => {
             </div>
           </div>
         </div>
-        <div className="">
+        <div>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium laborum aut earum officia minima, id
             adipisci sapiente neque, cumque soluta voluptatum optio non accusamus sit suscipit deserunt dolore autem
