@@ -9,6 +9,7 @@ import Login from "../../Pages/Login/Login";
 import Page404 from "../../Pages/Page404/Page404";
 import Register from "../../Pages/Register/Register";
 import Profile from "../../Pages/Shared/Profile/Profile";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/courses",
+        loader: () => fetch("https://edu-solutions-server.vercel.app/courses"),
         element: <Courses></Courses>,
       },
       {
@@ -45,7 +47,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile></Profile>,
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
     ],
   },

@@ -1,12 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 
 const Login = () => {
   const [resetEmail, setResetEmail] = useState(null);
   const { emailPasswordLogIn, resetPassword, googleLogIn, gitHubLogIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   // Login with email password
   const handleSubmit = (event) => {
@@ -23,6 +26,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         console.log("LogIn Successfully");
+        navigate(from, { replace: true });
         form.reset();
       })
       .catch((error) => {
@@ -55,6 +59,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         console.log("LogIn Successfully");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error.message);
@@ -68,6 +73,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         console.log("LogIn Successfully");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error.message);
