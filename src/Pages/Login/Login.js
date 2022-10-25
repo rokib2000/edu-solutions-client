@@ -1,10 +1,12 @@
 import React from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 
 const Login = () => {
-  const { emailPasswordLogIn, googleLogIn, gitHubLogIn } = useContext(AuthContext);
+  const [resetEmail, setResetEmail] = useState(null);
+  const { emailPasswordLogIn, resetPassword, googleLogIn, gitHubLogIn } = useContext(AuthContext);
 
   // Login with email password
   const handleSubmit = (event) => {
@@ -25,6 +27,24 @@ const Login = () => {
       })
       .catch((error) => {
         console.error(error.message);
+      });
+  };
+
+  // reset password
+  const handleEmail = (event) => {
+    const resetEmail = event.target.value;
+    // console.log(resetEmail);
+    setResetEmail(resetEmail);
+  };
+  const handleResetPassword = () => {
+    resetPassword(resetEmail)
+      .then(() => {
+        console.log("Password reset email sent!");
+      })
+      .catch((error) => {
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        // ..
       });
   };
 
@@ -66,7 +86,13 @@ const Login = () => {
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
-              <input type="email" name="email" placeholder="Your Email" className="input input-bordered" />
+              <input
+                onBlur={handleEmail}
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                className="input input-bordered"
+              />
             </div>
             <div className="form-control">
               <label className="label">
@@ -74,9 +100,19 @@ const Login = () => {
               </label>
               <input type="password" name="password" placeholder="Password" className="input input-bordered" />
             </div>
+
+            <div className="form-control mt-6">
+              <button type="submit" className="btn btn-primary">
+                Login
+              </button>
+            </div>
+          </form>
+          <div className="card-body mb-6 pt-0">
             <div className="form-control">
               <label className="label">
-                <button className="label-text-alt link link-hover">Forgot password?</button>
+                <button onClick={handleResetPassword} className="label-text-alt link link-hover">
+                  Forgot password?
+                </button>
               </label>
               <label className="label">
                 <p className="label-text-alt ">
@@ -87,12 +123,7 @@ const Login = () => {
                 </p>
               </label>
             </div>
-            <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
-            </div>
-          </form>
-          <div className="divider">OR</div>
-          <div className="card-body mb-6">
+            <div className="divider">OR</div>
             <div className="form-control ">
               <button onClick={handleGoogleLogin} className="btn btn-primary">
                 Login with Google

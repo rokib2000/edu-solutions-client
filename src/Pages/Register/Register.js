@@ -52,7 +52,7 @@ const Register = () => {
         form.reset();
       })
       .catch((error) => {
-        // console.log(error.message);
+        console.log(error.message);
       });
   };
 

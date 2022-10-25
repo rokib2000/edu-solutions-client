@@ -6,6 +6,7 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   sendEmailVerification,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   updateProfile,
@@ -47,6 +48,11 @@ const UserContext = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  // reset password
+  const resetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
+
   // google login
   const googleLogIn = () => {
     return signInWithPopup(auth, googleProvider);
@@ -62,6 +68,7 @@ const UserContext = ({ children }) => {
     emailPasswordRegister,
     updateUserProfile,
     verifyEmail,
+    resetPassword,
     emailPasswordLogIn,
     googleLogIn,
     gitHubLogIn,
