@@ -39,7 +39,7 @@ const Course = (props) => {
             <div className="flex items-center">
               <FaRegHeart className="mr-2 text-xl" /> {like}
             </div>
-            <div className="">Fee: {fee}</div>
+            <div className="">Fee: ${fee}</div>
           </div>
           <div className="card-actions  justify-between mt-4">
             <Link to={`/course/${id}`} className="btn btn-primary btn-sm ">
