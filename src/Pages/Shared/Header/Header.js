@@ -1,7 +1,21 @@
 import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Context/UserContext";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
+
   return (
     <div className="bg-primary text-primary-content mb-12">
       <div className="navbar container mx-auto">
@@ -70,34 +84,45 @@ const Header = () => {
         <div className="navbar-end ">
           <div className="hidden lg:flex">
             {" "}
-            <label className="swap">
+            <label className="swap mr-2">
               <input type="checkbox" />
               <div className="swap-on btn">Light</div>
               <div className="swap-off btn">Dark</div>
             </label>
-            <Link to="/login" className="btn ml-2">
-              Login
-            </Link>
-            <Link to="/register" className="btn ml-2">
-              Register
-            </Link>
+            {!user && (
+              <>
+                <Link to="/login" className="btn mr-2">
+                  Login
+                </Link>
+                <Link to="/register" className="btn mr-2">
+                  Register
+                </Link>
+              </>
+            )}
           </div>
 
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src="https://placeimg.com/80/80/people" />
-              </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <p className="justify-between">Profile</p>
-              </li>
-            </ul>
-          </div>
+          {user && (
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img src={user.photoURL ? user?.photoURL : "https://i.postimg.cc/sXGghwsb/profile.png"} alt="" />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <Link to="/profile" className="justify-between">
+                    Profile
+                  </Link>
+                  <button onClick={handleLogout} className="justify-between">
+                    Logout
+                  </button>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>
