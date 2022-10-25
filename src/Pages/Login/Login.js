@@ -8,7 +8,7 @@ const Login = () => {
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
         </div>
-        <div className="card w-96 flex-shrink-0  max-w-md shadow-2xl bg-base-100">
+        <div className="card w-96 flex-shrink-0  max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
             <div className="form-control">
               <label className="label">
@@ -41,7 +41,7 @@ const Login = () => {
           </div>
           <div className="divider">OR</div>
           <div className="card-body mb-6">
-            <div className="form-control mt-6">
+            <div className="form-control ">
               <button className="btn btn-primary">Login with Google</button>
             </div>
             <div className="form-control mt-6">
