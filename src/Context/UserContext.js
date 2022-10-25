@@ -31,7 +31,7 @@ const UserContext = ({ children }) => {
 
   // update profile
   const updateUserProfile = (name, imageUrl) => {
-    updateProfile(auth.currentUser, {
+    return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: imageUrl,
     });
@@ -39,8 +39,7 @@ const UserContext = ({ children }) => {
 
   // Verify Email
   const verifyEmail = () => {
-    sendEmailVerification(auth.currentUser);
-    return;
+    return sendEmailVerification(auth.currentUser);
   };
 
   // Email Password Login

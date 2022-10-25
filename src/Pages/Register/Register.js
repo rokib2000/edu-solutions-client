@@ -46,9 +46,11 @@ const Register = () => {
 
     emailPasswordRegister(email, password)
       .then((result) => {
-        // updateUser(name, imageUrl);
-        // emailVerify();
+        const user = result.user;
+        updateUser(name, imageUrl);
+        emailVerify();
         console.log("Account Create Successfully");
+        console.log(user);
         form.reset();
       })
       .catch((error) => {
@@ -57,22 +59,22 @@ const Register = () => {
   };
 
   // update name and  image url
-  // const updateUser = (name, imageUrl) => {
-  //   updateUserProfile(name, imageUrl)
-  //     .then(() => {
-  //       console.log("info updated");
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // };
+  const updateUser = (name, imageUrl) => {
+    updateUserProfile(name, imageUrl)
+      .then(() => {
+        console.log("info updated");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
-  // //email verify
-  // const emailVerify = () => {
-  //   verifyEmail().then(() => {
-  //     console.log("Please check your email and verify your email address.");
-  //   });
-  // };
+  //email verify
+  const emailVerify = () => {
+    verifyEmail().then(() => {
+      console.log("Please check your email and verify your email address.");
+    });
+  };
 
   return (
     <div>
