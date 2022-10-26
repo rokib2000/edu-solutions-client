@@ -1,7 +1,7 @@
 # Project Details
 
 - Project name: **Edu Solutions**.
-- Live Website: [quizMater](https://app.netlify.app/).
+- Live Website: [Edu Solutions](https://edu-solutions-client.web.app/).
 
 ---
 
