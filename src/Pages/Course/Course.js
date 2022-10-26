@@ -3,7 +3,7 @@ import { FaUsers, FaRegHeart, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Course = (props) => {
-  const { course, handleAddToCart } = props;
+  const { course } = props;
   const { id, name, type, like, review, fee, img, lecture, project, students } = course;
 
   // console.log(course);
@@ -45,7 +45,7 @@ const Course = (props) => {
             <Link to={`/course/${id}`} className="btn btn-primary btn-sm ">
               View Details
             </Link>
-            <button onClick={() => handleAddToCart(course)} className={`btn btn-secondary btn-sm`}>
+            <button className={`btn btn-secondary btn-sm`}>
               <FaShoppingCart className="text-xl"></FaShoppingCart>
             </button>
           </div>
