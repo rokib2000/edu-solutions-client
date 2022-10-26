@@ -1,3 +1,21 @@
+# Project Details
+
+- Project name: **Edu Solutions**.
+- Live Website: [quizMater](https://app.netlify.app/).
+
+---
+
+## Technologies
+
+A list of technologies used within the project:
+
+- [React](https://reactjs.org/): Version 18.2.0
+- [Tailwindcss](https://tailwindcss.com/): Version 3.2.1
+- [FireBase](https://firebase.google.com/): Version 9.12.1
+- [react-hot-toast](https://react-hot-toast.com/): Version 2.4.0
+- [react-router-dom](https://reactrouter.com/en/main): Version 6.4.2
+- [react-to-print](https://www.npmjs.com/package/react-to-print): Version 2.14.17
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
