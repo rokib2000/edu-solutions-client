@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [passwordError, setPasswordError] = useState("");
@@ -46,15 +47,17 @@ const Register = () => {
 
     emailPasswordRegister(email, password)
       .then((result) => {
-        const user = result.user;
+        // const user = result.user;
         updateUser(name, imageUrl);
         emailVerify();
-        console.log("Account Create Successfully");
-        console.log(user);
+        // console.log("Account Create Successfully");
+        // console.log(user);
+        toast.success("Account Create Successfully!");
         form.reset();
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
+        toast.error(error.message);
       });
   };
 
@@ -62,17 +65,20 @@ const Register = () => {
   const updateUser = (name, imageUrl) => {
     updateUserProfile(name, imageUrl)
       .then(() => {
-        console.log("info updated");
+        // console.log("info updated");
+        toast.success("Info Update Successfully!");
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
+        toast.error(error.message);
       });
   };
 
   //email verify
   const emailVerify = () => {
     verifyEmail().then(() => {
-      console.log("Please check your email and verify your email address.");
+      // console.log("Please check your email and verify your email address.");
+      toast.success("Please check your email and verify your email address.!");
     });
   };
 
@@ -114,6 +120,11 @@ const Register = () => {
                   className="input input-bordered"
                   required
                 />
+                <label className="label">
+                  <span className="label-text text-red-400">
+                    <small>Please provide at least one uppercase, special character, and 6 or more</small>
+                  </span>
+                </label>
               </div>
               <div className="form-control">
                 <label className="label">

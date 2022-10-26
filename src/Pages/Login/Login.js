@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
-import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../Context/UserContext";
 
 const Login = () => {
@@ -26,12 +26,13 @@ const Login = () => {
       .then((result) => {
         // const user = result.user;
         // console.log(user);
-        toast.error("Successfully login");
+        toast.success("Login successfully!");
         navigate(from, { replace: true });
         form.reset();
       })
       .catch((error) => {
-        console.error(error.message);
+        // console.error(error.message);
+        toast.error(error.message);
       });
   };
 
@@ -43,13 +44,15 @@ const Login = () => {
   };
   const handleResetPassword = () => {
     resetPassword(resetEmail)
-      .then(() => {
-        console.log("Password reset email sent!");
+      .then((result) => {
+        // console.log("Password reset email sent!");
+        toast.success("Password reset email sent!");
       })
       .catch((error) => {
         // const errorCode = error.code;
         // const errorMessage = error.message;
         // ..
+        toast.error(error.message);
       });
   };
 
@@ -59,11 +62,12 @@ const Login = () => {
       .then((result) => {
         // const user = result.user;
         // console.log(user);
-        toast.error("Successfully login");
+        toast.success("Login successfully!");
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.error(error.message);
+        // console.error(error.message);
+        toast.error(error.message);
       });
   };
 
@@ -73,11 +77,12 @@ const Login = () => {
       .then((result) => {
         // const user = result.user;
         // console.log(user);
-        toast.error("Successfully login");
+        toast.success("Login successfully!");
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.error(error.message);
+        // console.error(error.message);
+        toast.error(error.message);
       });
   };
 
