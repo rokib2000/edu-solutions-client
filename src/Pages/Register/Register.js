@@ -66,7 +66,7 @@ const Register = () => {
     updateUserProfile(name, imageUrl)
       .then(() => {
         // console.log("info updated");
-        toast.success("Info Update Successfully!");
+        // toast.success("Info Update Successfully!");
       })
       .catch((error) => {
         // console.error(error);
@@ -78,7 +78,7 @@ const Register = () => {
   const emailVerify = () => {
     verifyEmail().then(() => {
       // console.log("Please check your email and verify your email address.");
-      toast.success("Please check your email and verify your email address.!");
+      toast("Please check your email and verify your email address.!");
     });
   };
 
