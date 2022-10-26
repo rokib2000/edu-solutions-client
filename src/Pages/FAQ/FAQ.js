@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../Context/UserContext";
+import React from "react";
+import { useLoaderData } from "react-router-dom";
 
 const FAQ = () => {
-  const { user } = useContext(AuthContext);
-
+  const questions = useLoaderData();
+  console.log(questions);
   return (
     <div>
       <div className="hero my-6 ">
@@ -14,36 +14,14 @@ const FAQ = () => {
         </div>
       </div>
       <div>
-        <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
-          <div className="collapse-title text-xl font-medium">Focus me to see content</div>
-          <div className="collapse-content">
-            <p>tabIndex={0} attribute is necessary to make the div focusable</p>
+        {questions.map((question) => (
+          <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
+            <div className="collapse-title text-xl font-medium">{question.qun}</div>
+            <div className="collapse-content">
+              <p>{question.ans}</p>
+            </div>
           </div>
-        </div>
-        <div tabIndex={1} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
-          <div className="collapse-title text-xl font-medium">Focus me to see content</div>
-          <div className="collapse-content">
-            <p>tabIndex={1} attribute is necessary to make the div focusable</p>
-          </div>
-        </div>
-        <div tabIndex={2} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
-          <div className="collapse-title text-xl font-medium">Focus me to see content</div>
-          <div className="collapse-content">
-            <p>tabIndex={2} attribute is necessary to make the div focusable</p>
-          </div>
-        </div>
-        <div tabIndex={3} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
-          <div className="collapse-title text-xl font-medium">Focus me to see content</div>
-          <div className="collapse-content">
-            <p>tabIndex={3} attribute is necessary to make the div focusable</p>
-          </div>
-        </div>
-        <div tabIndex={4} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
-          <div className="collapse-title text-xl font-medium">Focus me to see content</div>
-          <div className="collapse-content">
-            <p>tabIndex={4} attribute is necessary to make the div focusable</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

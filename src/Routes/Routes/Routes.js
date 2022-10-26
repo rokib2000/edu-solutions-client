@@ -33,6 +33,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/faq",
+        loader: async () => fetch("https://edu-solutions-server.vercel.app/faq"),
         element: <FAQ></FAQ>,
       },
       {
