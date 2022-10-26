@@ -8,6 +8,7 @@ import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Page404 from "../../Pages/Page404/Page404";
 import Register from "../../Pages/Register/Register";
+import CourseAccess from "../../Pages/Shared/CourseAccess/CourseAccess";
 import Profile from "../../Pages/Shared/Profile/Profile";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
@@ -51,6 +52,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/premiumAccess",
+        element: (
+          <PrivateRoute>
+            <CourseAccess />
           </PrivateRoute>
         ),
       },

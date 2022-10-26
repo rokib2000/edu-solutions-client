@@ -1,6 +1,6 @@
 import React from "react";
 import { useReactToPrint } from "react-to-print";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { useRef } from "react";
 import { FaRegHeart, FaUsers } from "react-icons/fa";
 import RightSideNav from "../Shared/RightSideNav/RightSideNav";
@@ -96,9 +96,9 @@ const CoursesDetails = () => {
                   <p className="">{description}</p>
 
                   <div className="flex py-4 space-x-4">
-                    <button type="button" className="btn btn-secondary btn-md">
-                      Add to Cart
-                    </button>
+                    <Link to="/premiumAccess" type="button" className="btn btn-secondary btn-md">
+                      Get premium access
+                    </Link>
                     <button onClick={handlePrint} className="btn btn-primary btn-md">
                       Save Pdf
                     </button>

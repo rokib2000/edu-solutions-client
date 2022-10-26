@@ -45,9 +45,9 @@ const Course = (props) => {
             <Link to={`/course/${id}`} className="btn btn-primary btn-sm ">
               View Details
             </Link>
-            <button className={`btn btn-secondary btn-sm`}>
+            <Link to="/premiumAccess" className={`btn btn-secondary btn-sm`}>
               <FaShoppingCart className="text-xl"></FaShoppingCart>
-            </button>
+            </Link>
           </div>
         </div>
       </div>
